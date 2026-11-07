@@ -12,4 +12,7 @@ export const routes: Routes = [
   { path: 'booking', loadComponent: () => import('./pages/booking/booking').then(m => m.Booking) },
   { path: 'profile', loadComponent: () => import('./pages/profile/profile').then(m => m.Profile) },
   { path: '**', redirectTo: 'home' },
+  { path: 'booking/:roomId', loadComponent: () => import('./pages/booking/booking').then(m => m.Booking) },
+  { path: 'payment/:bookingId', loadComponent: () => import('./pages/payment/payment').then(m => m.Payment) },
+  { path: 'my-bookings', loadComponent: () => import('./pages/my-bookings/my-bookings').then(m => m.MyBookings) },
 ];

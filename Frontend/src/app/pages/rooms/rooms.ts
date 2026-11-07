@@ -44,11 +44,13 @@ export class Rooms {
   q = signal('');
   sort = signal('');
   guests = signal(Number(inject(ActivatedRoute).snapshot.queryParamMap.get('guests') ?? 0));
+
   list = computed(() => {
-    let l = this.store.rooms.filter(r =>
+    let l = this.store.rooms().filter(r =>
       r.name.toLowerCase().includes(this.q().toLowerCase()) && r.capacity >= this.guests());
     if (this.sort()) l = [...l].sort((a, b) => this.sort() === 'asc' ? a.price - b.price : b.price - a.price);
     return l;
   });
-  book(r: Room) { this.store.add(r); this.router.navigate(['/booking']); }
+
+  book(r: Room) { this.router.navigate(['/booking', r.id]); }
 }
