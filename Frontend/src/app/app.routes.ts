@@ -9,10 +9,9 @@ export const routes: Routes = [
   { path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.Contact) },
   { path: 'login', loadComponent: () => import('./pages/login/login').then(m => m.Login) },
   { path: 'register', loadComponent: () => import('./pages/register/register').then(m => m.Register) },
-  { path: 'booking', loadComponent: () => import('./pages/booking/booking').then(m => m.Booking) },
-  { path: 'profile', loadComponent: () => import('./pages/profile/profile').then(m => m.Profile) },
-  { path: '**', redirectTo: 'home' },
   { path: 'booking/:roomId', loadComponent: () => import('./pages/booking/booking').then(m => m.Booking) },
   { path: 'payment/:bookingId', loadComponent: () => import('./pages/payment/payment').then(m => m.Payment) },
   { path: 'my-bookings', loadComponent: () => import('./pages/my-bookings/my-bookings').then(m => m.MyBookings) },
+  { path: 'profile', loadComponent: () => import('./pages/profile/profile').then(m => m.Profile) },
+  { path: '**', redirectTo: 'home' },
 ];

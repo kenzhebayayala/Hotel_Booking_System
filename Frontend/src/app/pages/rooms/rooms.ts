@@ -41,9 +41,10 @@ import { Room, Store } from '../../services/store';
 export class Rooms {
   private store = inject(Store);
   private router = inject(Router);
-  q = signal('');
+  private params = inject(ActivatedRoute).snapshot.queryParamMap;
+  q = signal(this.params.get('q') ?? '');
   sort = signal('');
-  guests = signal(Number(inject(ActivatedRoute).snapshot.queryParamMap.get('guests') ?? 0));
+  guests = signal(Number(this.params.get('guests') ?? 0));
 
   list = computed(() => {
     let l = this.store.rooms().filter(r =>
